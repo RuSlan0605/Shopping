@@ -1,0 +1,15 @@
+#footer {
+	text-align: center;
+	font-size: 0.9em;
+	margin-top: 90px;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	background-color: #ffffff;
+	border-top: thin solid #bbbbbb;
+	clear: both;
+	color: #969696;
+}
+
+.card {
+	margin-top: 20px;
+}
