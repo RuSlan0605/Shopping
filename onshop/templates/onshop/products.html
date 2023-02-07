@@ -5,15 +5,24 @@
   {% for product in products %}
    <table> 
       <ul>
-        <div class="col">
-          <div class=" card-deck mb-3 text-center">
-            <div class="card h-100 shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
-              <img class="card-img-top" src="{{ product.image.url }}" alt="">
-              <div class="card-body">
-                <h5 class="card-title">{{ product.name }}</h5>
-                <p class="card-text">{{ product.price }}$</p>
-                <a href="#" class="btn btn-primary">Подробнее</a>
-                <a href="#" class="btn btn-primary">В Корзину</a>
+        <div>
+          <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{{ product.image.url }}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ product.name }}</h5>
+                  <p class="card-text">{{ product.price }}$</p>
+                  <a href="#">
+                    <button type="button" class="btn btn-outline-primary">Подробнее</button>
+                  </a>
+                  |
+                  <a href="#">
+                    <button type="button" class="btn btn-outline-success">В Корзину</button>
+                  </a>
+                </div>
               </div>
             </div>
           </div>

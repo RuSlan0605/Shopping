@@ -1,1 +1,13 @@
 {% extends 'base.html' %}
+
+{% block content %}
+    <div class="card-deck mb-3 text-center">
+        <div class="card h-100 shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
+            <div class="card-body">
+            <h5 class="card-title">{{ object.name }}</h5>
+            <p class="card-text">{{ object.description }}</p>
+            <a href="#" class="btn btn-primary">В Корзину</a>
+            </div>
+        </div>
+    </div
+{% endblock content %}
