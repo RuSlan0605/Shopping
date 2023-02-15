@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     
     #Third party apps
     'ckeditor',
+    'crispy_forms',
 
 ]
 

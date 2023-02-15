@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
 
 {% block title %}
-	Contact us
+	Quote Request
 {% endblock %}
 
 {% block content %}
+	<h1>Quote Request</h1>
 	{% if submitted %}
 		<p class="submitted">
-			Your message was submitted successfully, Thank you.
+			Your quote was submitted successfully. Thank you
 		</p>
 	{% else %}
-		<form action="" method="post" enctype="multipart/form-data" novalidate>
-			<table style="margin-top: 40px; margin-left: 300px;">
-				{% csrf_token %}
+		<form action="" enctype="multipart/form-data" method="post" novalidate>
+			{% csrf_token %}
+			<table>
 				{{ form.as_table }}
 				<tr>
 					<td>&nbsp;</td>
@@ -23,4 +24,5 @@
 			</table>
 		</form>
 	{% endif %}
+
 {% endblock %}

@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block title %}
-	Quote login
+	Shop login
 {% endblock title %}
 
 {% block content %}
     <h1>Please login</h1>
-    <p>You must be logged in to submit or view quotes.</p>
+    <p>You must be logged in to submit or view products.</p>
     <form method="post" action="{% url 'login' %}">
         <table>
             {{ form.as_table }}

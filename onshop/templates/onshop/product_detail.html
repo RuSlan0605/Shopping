@@ -1,13 +1,25 @@
 {% extends 'base.html' %}
 
-{% block content %}
-    <div class="card-deck mb-3 text-center">
-        <div class="card h-100 shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
-            <div class="card-body">
-            <h5 class="card-title">{{ object.name }}</h5>
-            <p class="card-text">{{ object.description }}</p>
-            <a href="#" class="btn btn-primary">В Корзину</a>
+{% for product in products %}
+    {% block content %}
+        <div class="container center-block" style="margin-left: 60px; border: 0,5px solid; 
+            padding-left: 70px; background-color: rgb(242, 242, 242);">
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 540px; 
+            margin-left: 210px; border-top: 0,5px solid; border-bottom: 0,5px solid; 
+            border-left: 0,5px solid; border-right: 0,5px solid;">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <p class="card-text">{{ product.price }}$</p>
+                            <a href="#">
+                                <button type="button" class="btn btn-outline-success">В Корзину</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div
-{% endblock content %}
+    {% endblock %}
+{% endfor %}

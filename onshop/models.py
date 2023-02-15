@@ -24,13 +24,7 @@ class Product(models.Model):
 
 class Category(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
-    products = models.ForeignKey(Product, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
-class Category(models.Model):
-    name = models.CharField(max_length=100, blank=True, null=True)
-    products = models.ForeignKey(Product, on_delete=models.CASCADE)
+    products = models.ForeignKey(Product, on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
         return self.name
