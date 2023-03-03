@@ -5,10 +5,10 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>Please login</h1>
-    <p>You must be logged in to submit or view products.</p>
+    <h1 style="margin-left: 100px; font-family: Arial, Helvetica, sans-serif;">Please login</h1>
+    <p style="margin-left: 100px; font-family: Arial, Helvetica, sans-serif;">You must be logged in to submit or view products.</p>
     <form method="post" action="{% url 'login' %}">
-        <table>
+        <table style="margin-left: 100px;">
             {{ form.as_table }}
             {% csrf_token %}
             <tr>
@@ -16,7 +16,7 @@
                 <td><input type="submit" value="login"></td>
             </tr>
         </table>
-        <p>
+        <p style="margin-left: 100px; font-family: Arial, Helvetica, sans-serif;">
             Not registered yet?
             <a href="{% url 'register' %}">Register here</a>
         </p>

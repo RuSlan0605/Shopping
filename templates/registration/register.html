@@ -5,10 +5,10 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>User Registration </h1>
-    <p>In order to register you should enter your username and password</p>
+    <h1 style="margin-left: 100px; font-family: Arial, Helvetica, sans-serif; margin-top: 15px;">User Registration </h1>
+    <p style="margin-left: 100px; font-family: Arial, Helvetica, sans-serif;">In order to register you should enter your username and password</p>
     <form method="post">
-        <table>
+        <table style="margin-left: 100px; font-family: Arial, Helvetica, sans-serif;">
             {{ form.as_table }}
             {% csrf_token %}
             <tr>

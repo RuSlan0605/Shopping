@@ -1,9 +1,31 @@
 {% extends 'base.html' %}
 
-<ul>
-    {% for city in object_list %}
-      <li>
-        {{ city.name }}, {{ city.state }}
-      </li>
-    {% endfor %}
-  </ul>
+{% block content %}
+  {% for product in object_list %}
+    <div class="container center-block" style="margin-left: 60px; border: 0,5px solid; 
+    padding-left: 70px; background-color: rgb(242, 242, 242);">
+      <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 540px; 
+      margin-left: 210px; border-top: 0,5px solid; border-bottom: 0,5px solid; 
+      border-left: 0,5px solid; border-right: 0,5px solid;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="{{ product.image.url }}" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">{{ product.price }}$</p>
+              <a href="#">
+                <button type="button" class="btn btn-outline-primary">Подробнее</button>
+              </a>
+              |
+              <a href="#">
+                  <button type="button" class="btn btn-outline-success">В Корзину</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}

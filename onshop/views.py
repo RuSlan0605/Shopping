@@ -1,9 +1,8 @@
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
-from .models import Product, Order, Customer, OrderItem, ShippingAddress
-from .forms import ProductForm, OrderItemForm, CustomerForm, shippingAddressForm
-from .forms import ContactForm
+from onshop.models import Product, Customer, Category
+from onshop.forms import CustomerForm, ProductForm
+from onshop.forms import ContactForm
 from django.core.mail import send_mail, get_connection
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -18,11 +17,34 @@ from django.contrib.auth.forms import UserChangeForm
 from django.db.models import Q
 
 def product_list(request):
-    products = Product.objects.all()
-    context = {
-        'products' : products
+	products = Product.objects.all()
+	categories = Category.objects.all()
+	context = {
+        'products' : products,
+		'categories': categories
     }
-    return render(request, 'onshop/products.html', context)
+	return render(request, 'onshop/products.html', context)
+
+class ProductDetail(DetailView):
+
+	template_name = 'onshop/product_detail.html'
+	queryset = Product.objects.all()
+
+	def get_context_data(self, **kwargs):
+		context = super(ProductDetail, self).get_context_data(**kwargs)
+		context['products'] = Product.objects.all()
+		return context
+
+def by_category(request, category_id):
+    products = Product.objects.filter(category=category_id)
+    categories = Category.objects.all()
+    current_category = Category.objects.get(pk=category_id)
+    context = {
+        'products': products,
+        'categories': categories,
+        'current_category': current_category,
+    }
+    return render(request, 'onshop/categories.html', context)
 
 def contact(request):
 	submitted = False 
@@ -49,14 +71,7 @@ def contact(request):
 		'submitted' : submitted
 	}
 	return render(request, 'onshop/contact.html', context)
-class ProductDetail(DetailView):
-	model = Product
-	context_object_name = 'product' #default -> object
-
-	def get_context_data(self, **kwargs):
-		context = super(ProductDetail, self).get_context_data(**kwargs)
-		context['page_list'] = Product.objects.all()
-		return context
+	
 class Register(CreateView):
 	template_name = 'registration/register.html'
 	form_class = UserCreationForm
@@ -85,13 +100,14 @@ class Password_ChangeView(CreateView):
 		return HttpResponseRedirect(self.success_url)
 
 class SearchResultsView(ListView):
+
     model = Product
     template_name = 'onshop/search_results.html'
 
     def get_queryset(self): # new
         query = self.request.GET.get("q")
         object_list = Product.objects.filter(
-            Q(name__icontains=query) | Q(state__icontains=query)
+            Q(name__icontains=query)
         )
         return object_list
 

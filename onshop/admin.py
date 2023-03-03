@@ -13,7 +13,8 @@ admin.site.register(Customer, CustomerAdmin)
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'price',)
-    ordering = ('price',)
+    list_display_links = ('id', 'name')
+    ordering = ('id',)
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Category)

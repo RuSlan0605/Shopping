@@ -6,19 +6,17 @@
           <span></span>
           <span></span>
           <span></span>
-      <ul id="menu">
-          <li class="dropdown-submenu"><a class="aPhone" href="#">Сборки ПК</a></li>
-          <li class="Li1"><a class="aPhone" href="#">Ноутбуки</a></li>
-          <li class="Li1"><a class="aPhone" href="#">Мышки</a></li>
-          <li class="Li1"><a class="aPhone" href="#">Наушники</a></li>
-          <li class="Li1"><a class="aPhone" href="#">Микрофоны</a></li>
-          <li class="Li1"><a class="aPhone" href="#">Мониторы</a></li>
-          <li class="Li1"><a class="aPhone" href="#">Колонки</a></li>
+      <ul id="menu" style="height: 600px;">
+        {% for category in categories %}
+          <li>
+            <a href="{% url 'categories' %} {{ category.pk }}" class="link">{{ category.name }}</a>
+          </li>
+        {% endfor %}
       </ul>
     </div>
     <ul class="navbar-nav mr-auto" style="margin-left: 100px; font-size: 18px;">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home<span class="sr-only"></span></a>
+        <a class="nav-link" href="{% url 'product' %}">Home<span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'contact' %}">Contacts</a>
@@ -27,14 +25,18 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <form action="{% url 'search_results' %}" class="form-inline my-2 my-md-0" style="margin-left: 500px;">
-      <input class="form-control" name="q" type="text" placeholder="Search" style="margin-left: 50px;">
+    <form action="{% url 'search_results' %}" class="form-inline my-2 my-md-0" method="get" style="margin-left: 500px;">
+      <input class="form-control" name="q" type="text" placeholder="Search..." style="margin-left: 50px;">
     </form>
-    <button type="button" class="btn btn-outline-secondary" style="margin-left: 113px;" href="#">
-      Log in
-    </button>
-    <button type="button" class="btn btn-outline-success" style="margin-left: 10px;" href="#">
-      Sign up
-    </button>
+    <a href="{% url 'login' %}">
+      <button type="button" class="btn btn-outline-secondary" style="margin-left: 113px;">
+        Log in
+      </button>
+    </a>
+    <a href="{% url 'register' %}">
+      <button type="button" class="btn btn-outline-success" style="margin-left: 10px;">
+        Sign up
+      </button>
+    </a>
   </nav>
 </header>
